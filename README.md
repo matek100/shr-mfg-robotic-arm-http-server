@@ -23,6 +23,8 @@ Hiwonder JetMax JETSON NANO Robot Arm ROS Open Source robot, more info: https://
 * run <code>nodejs index.js</code> to start the application
 
 ## Client-side application usage
+* Install and use axios as an HTTP client. 
+* API endpoints:
 
 | API endpoint | description | parameter(s) | returns |
 | ------------ | ----------- | ------------ | ------- |
@@ -30,12 +32,47 @@ Hiwonder JetMax JETSON NANO Robot Arm ROS Open Source robot, more info: https://
 | /basic/moveTo | absolute move to a specific location | msg={"x": a, "y" = b, "z" = c} | /
 | /basic/move | relative move from current location | msg={"x": a, "y" = b, "z" = c} | /
 
-Notes:
-* **/basic/moveTo** API endpoint has a pre-set duration of the move 100 ms, the moves are quite slow.
-* **/basic/move** endpoint has a pre-set duration of the move of 0.1 ms. **The moves are fast, do not make big changes!**
-* When moving the robotic arm consider the limits of the arm end effector and of the operational area. 
+* **Examples of usage:**
+    * calling API endpoint with no parameters
+    ```
+    // call /basic/state API endpoint
+    axios.get('http://' + jetmaxUbuntServerIpAddress + '/basic/state')
+    // handle response
+        .then(function (response) {
+            console.log("/basic/state response received, data:" + JSON.stringify(response.data));
+            // process data ...
+        })
+        // handle error
+        .catch(function (error) {
+            console.error("Error calling /basic/state API endpoint.");
+            console.error(error); 
+        });
+    ``` 
+  
+    * calling API endpoint with parameters
+    ``` 
+    // call /basic/move API endpoint
+    axios.get('http://' + jetmaxUbuntServerIpAddress + '/basic/move', {
+        params: {msg:{"x": 0, "y": -150, "z": 200}}
+    })
+		// handle response
+        .then(function (response) {
+            console.log("/basic/state response received, data:" + JSON.stringify(response.data));
+            // process data ...
+        })
+		// handle error
+        .catch(function (error) {
+            console.error("Error calling /basic/state API endpoint.");
+            console.error(error); 
+        });
+    ``` 
 
-## Examples:
+* **Notes**:
+    * **/basic/moveTo** API endpoint has a pre-set duration of the move 100 ms, the moves are quite slow.
+    * **/basic/move** endpoint has a pre-set duration of the move of 0.1 ms. **The moves are fast, do not make big changes!**
+    * When moving the robotic arm consider the limits of the arm end effector and of the operational area. 
+
+## Formats of data:
 * JetMax Robotic Arm state JSON object: 
 ```json
 {

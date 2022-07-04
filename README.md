@@ -10,10 +10,12 @@ Hiwonder JetMax JETSON NANO Robot Arm ROS Open Source robot, more info: https://
     * positions of 3 joints
     * valuess of 2 PWM signals
     * state of the end effector sucker
-* **move robotic arm to a specific location (x, y, z coordinates)**
+* **move robotic arm to a specific location**
+    * x, y, z coordinates
     * absolute move
 * **move robotic arm from a specific state**
-    * relative move: dx, dy, dz
+    * dx, dy, dz
+    * relative move
     
 ## Server-side application setup
 * download the application code to the JetMax Ubuntu computer
@@ -23,14 +25,14 @@ Hiwonder JetMax JETSON NANO Robot Arm ROS Open Source robot, more info: https://
 * run <code>nodejs index.js</code> to start the application
 
 ## Client-side application usage
-* Install and use axios as an HTTP client. 
+* Install and use **axios** as an HTTP client. 
 * API endpoints:
 
 | API endpoint | description | parameter(s) | returns |
 | ------------ | ----------- | ------------ | ------- |
-| /basic/state | retrieve full JetMax Robotic Arm data | / | JSON object |
-| /basic/moveTo | absolute move to a specific location | msg={"x": a, "y" = b, "z" = c} | /
-| /basic/move | relative move from current location | msg={"x": a, "y" = b, "z" = c} | /
+| <code>/basic/state</code> | retrieve full JetMax Robotic Arm data | / | JSON object |
+| <code>/basic/moveTo</code> | absolute move to a specific location | <code>msg={"x": a, "y" = b, "z" = c}</code> | /
+| <code>/basic/move</code> | relative move from current location | <code>msg={"x": a, "y" = b, "z" = c}</code> | /
 
 * **Examples of usage:**
     * calling API endpoint with no parameters
@@ -68,8 +70,8 @@ Hiwonder JetMax JETSON NANO Robot Arm ROS Open Source robot, more info: https://
     ``` 
 
 * **Notes**:
-    * **/basic/moveTo** API endpoint has a pre-set duration of the move 100 ms, the moves are quite slow.
-    * **/basic/move** endpoint has a pre-set duration of the move of 0.1 ms. **The moves are fast, do not make big changes!**
+    * <code>/basic/moveTo</code> API endpoint has a pre-set duration of the move 100 ms, the moves are quite slow.
+    * <code>/basic/move</code> endpoint has a pre-set duration of the move of 0.1 ms. **The moves are fast, do not make big changes!**
     * When moving the robotic arm consider the limits of the arm end effector and of the operational area. 
 
 ## Formats of data
@@ -90,7 +92,7 @@ Hiwonder JetMax JETSON NANO Robot Arm ROS Open Source robot, more info: https://
 "sucker": false
 }
 ```
-* /basic/moveTo endpoint parameter msg:
+* <code>/basic/moveTo</code> endpoint parameter msg:
 ```json
 {
 "x": 0, 
@@ -98,7 +100,7 @@ Hiwonder JetMax JETSON NANO Robot Arm ROS Open Source robot, more info: https://
 "z": 200
 }
 ```
-* /basic/move endpoint parameter msg:
+* <code>/basic/move</code> endpoint parameter msg:
 ```json
 {
 "x": 0, 

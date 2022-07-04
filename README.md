@@ -30,9 +30,10 @@ Hiwonder JetMax JETSON NANO Robot Arm ROS Open Source robot, more info: https://
 
 | API endpoint | description | parameter(s) | returns |
 | ------------ | ----------- | ------------ | ------- |
-| <code>/basic/state</code> | retrieve full JetMax Robotic Arm data | / | JSON object |
+| <code>/basic/state</code> | retrieve full robotic arm data | / | JSON object |
 | <code>/basic/moveTo</code> | absolute move to a specific location | <code>msg={"x": a, "y" = b, "z" = c}</code> | /
 | <code>/basic/move</code> | relative move from current location | <code>msg={"x": a, "y" = b, "z" = c}</code> | /
+| <code>/basic/suction</code> | enable or disable the suction of the robotic arm | <code>msg={"data": true / false}</code> | /
 
 * **Examples of usage:**
     * calling API endpoint with no parameters
@@ -70,12 +71,12 @@ Hiwonder JetMax JETSON NANO Robot Arm ROS Open Source robot, more info: https://
     ``` 
 
 * **Notes**:
-    * <code>/basic/moveTo</code> API endpoint has a pre-set duration of the move 100 ms, the moves are quite slow.
+    * <code>/basic/moveTo</code> API endpoint has a pre-set duration of the move 100 ms, the moves are slow.
     * <code>/basic/move</code> endpoint has a pre-set duration of the move of 0.1 ms. **The moves are fast, do not make big changes!**
-    * When moving the robotic arm consider the limits of the arm end effector and of the operational area. 
+    * When moving the robotic arm consider the limits of the robotic arm and of the operational area. 
 
 ## Formats of data
-* JetMax Robotic Arm state JSON object: 
+* JetMax robotic arm state JSON object: 
 ```json
 {
 "x": 0, 

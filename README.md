@@ -16,7 +16,7 @@ Hiwonder JetMax JETSON NANO Robot Arm ROS Open Source robot, more info: https://
     * relative move: dx, dy, dz
     
 ## Server-side application setup
-* download the code to the JetMax Ubuntu computer
+* download the application code to the JetMax Ubuntu computer
 * open terminal window and move to the folder where the application code was downloaded
 * run <code>npm install</code> to install the required Node.js modules
 * open config.json file and define the address of the JetMax Ubuntu computer and the port for the Node.js application
@@ -72,7 +72,7 @@ Hiwonder JetMax JETSON NANO Robot Arm ROS Open Source robot, more info: https://
     * **/basic/move** endpoint has a pre-set duration of the move of 0.1 ms. **The moves are fast, do not make big changes!**
     * When moving the robotic arm consider the limits of the arm end effector and of the operational area. 
 
-## Formats of data:
+## Formats of data
 * JetMax Robotic Arm state JSON object: 
 ```json
 {

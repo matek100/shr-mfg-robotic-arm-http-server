@@ -33,7 +33,7 @@ Hiwonder JetMax JETSON NANO Robot Arm ROS Open Source robot, more info: https://
 | <code>/basic/state</code> | retrieve full robotic arm data | / | JSON object |
 | <code>/basic/moveTo</code> | absolute move to a specific location | <code>msg={"x": a, "y" = b, "z" = c}</code> | /
 | <code>/basic/move</code> | relative move from current location | <code>msg={"x": a, "y" = b, "z" = c}</code> | /
-| <code>/basic/suction</code> | enable or disable the suction of the robotic arm | <code>msg={"data": true / false}</code> | /
+| <code>/basic/suction</code> | enable or disable the suction of the robotic arm | <code>msg={"data": true/false}</code> | /
 
 * **Examples of usage:**
     * calling API endpoint with no parameters

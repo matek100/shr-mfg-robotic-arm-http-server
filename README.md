@@ -4,7 +4,7 @@
 Hiwonder JetMax JETSON NANO Robot Arm ROS Open Source robot, more info: https://www.hiwonder.hk/collections/jetson/products/hiwonder-jetmax-jetson-nano-robot-arm-ros-open-source-vision-recognition-program-robot
 
 ## Communication overview
-Jetmax robotic arm runs websocket server to wich **Shared Manufacturing Robotic Arm HTTP Server** is connecting. **Shared Manufacturing Robotic Arm HTTP Server** represents middleware server that enables communication with JetMax robotic arm via specified HTTP API. 
+Jetmax robotic arm runs websocket server to which **Shared Manufacturing Robotic Arm HTTP Server** is connecting. **Shared Manufacturing Robotic Arm HTTP Server** represents middleware server that enables communication with JetMax robotic arm via specified HTTP API. 
 
 ```mermaid
 graph LR
@@ -37,7 +37,7 @@ B-->|API endpoints|C
     
 ## Server-side application setup
 * download the application code to the JetMax Ubuntu computer
-* open terminal window and move to the folder where the application code was downloaded
+* open terminal window and move to the folder where you downloaded the application code
 * run <code>npm install</code> to install the required Node.js modules
 * open config.json file and define the address of the JetMax Ubuntu computer and the port for the Node.js application
 * run <code>nodejs index.js</code> to start the application

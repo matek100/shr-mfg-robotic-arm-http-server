@@ -1,7 +1,25 @@
-# Shared Manufacturing Robotic Arm HTTP API
+# Shared Manufacturing Robotic Arm HTTP Server
 
 ## Jetmax Robotic Arm
 Hiwonder JetMax JETSON NANO Robot Arm ROS Open Source robot, more info: https://www.hiwonder.hk/collections/jetson/products/hiwonder-jetmax-jetson-nano-robot-arm-ros-open-source-vision-recognition-program-robot
+
+## Communication overview
+Jetmax robotic arm runs websocket server to wich **Shared Manufacturing Robotic Arm HTTP Server** is connecting. **Shared Manufacturing Robotic Arm HTTP Server** represents middleware server that enables communication with JetMax robotic arm via specified HTTP API. 
+
+```mermaid
+graph LR
+subgraph JetMax Robotic arm
+A[Socket server]
+end
+subgraph Computer
+B[HTTP server<br>Shared Manufacturing Robotic Arm HTTP API]
+end	
+A-->B
+subgraph Computer 2
+C[HTTP client <br> Browser or NodeJs app]
+end
+B-->|API endpoints|C 
+```
 
 ## HTTP API basic info
 * **retrieve robotic arm state**

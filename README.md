@@ -12,7 +12,7 @@ subgraph JetMax Robotic arm
 A[Socket server]
 end
 subgraph Computer
-B[HTTP server<br>Shared Manufacturing Robotic Arm HTTP API]
+B[HTTP server<br>Shared Manufacturing Robotic Arm HTTP Server]
 end	
 A-->B
 subgraph Computer 2

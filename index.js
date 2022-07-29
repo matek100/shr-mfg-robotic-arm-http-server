@@ -15,6 +15,7 @@ const config = require("./config.json");
 
 // ########## global variables
 let jetmaxState = {};
+let image = []
 
 // create a websocket connection to the jetmax socket server
 const jetmaxWebSocketServer = 'ws:' + config.roboticArmIpAddress + ":9090";
@@ -28,7 +29,12 @@ ws.on('open', function open() {
 
     // SUBSCRIBE TO ALL RELEVANT TOPICS:
     //  /jetmax/status/
-    let subData = subscribeData("id1", "/jetmax/status", "jetmax_control/JetMax", "none", 0, 0);
+    let subData = subscribeData("subscribe:/jetmaxState", "/jetmax/status", "jetmax_control/JetMax", "none", 0, 0);
+    console.log("subscribe data sent: " + JSON.stringify(subData));
+    ws.send(JSON.stringify(subData));
+
+    // /usb_cam/image_rect_color
+    subData = subscribeData("subscribe:/image", "/usb_cam/image_rect_color", "sensor_msgs/Image", "none", 0, 0);
     console.log("subscribe data sent: " + JSON.stringify(subData));
     ws.send(JSON.stringify(subData));
 
@@ -60,6 +66,11 @@ ws.on('message', function message(data) {
     if (dataJson.topic === '/jetmax/status') {
         // update local variable for jetmax robot arm state - used by the /basic/state endpoint
         jetmaxState = dataJson.msg;
+    }
+    else if (dataJson.topic === '/usb_cam/image_rect_color') {
+        // TODO: check and save the image received
+        // this should return an image as a 2D array --> CHECK
+        console.log(dataJson.msg);
     }
 })
 

@@ -119,7 +119,7 @@ app.get('/basic/moveTo', function (req, res) {
         console.log("Error, missing msg parameter.");
         res.send("Error, missing msg parameter.");
     } else {
-        // extract data from the request = location to move the robot arm to {{"x":-14,"y":-117,"z":100"}
+        // extract data from the request = location to move the robot arm to {"x":-14,"y":-117,"z":100"}
         let msg = JSON.parse(req.query.msg);
         // add the duration parameter
         msg.duration = 100; // this is the default value for absolute movements
@@ -143,7 +143,7 @@ app.get('/basic/move', function (req, res) {
         console.log("Error, missing msg parameter.");
         res.send("Error, missing msg parameter.");
     } else {
-        // extract data from the request = relative movement of the robot arm to {{"x":-14,"y":-117,"z":100"}
+        // extract data from the request = relative movement of the robot arm to {"x":-14,"y":-117,"z":100"}
         let msg = JSON.parse(req.query.msg);
         // add the duration parameter
         msg.duration = 0.5; // this is the default value for relative movements
@@ -167,7 +167,7 @@ app.get('/basic/suction', function (req, res) {
         console.log("Error, missing msg parameter.");
         res.send("Error, missing msg parameter.");
     } else {
-        // extract data from the request = relative movement of the robot arm to {{"x":-14,"y":-117,"z":100"}
+        // extract data from the request = turn on/off the suction {"data":true/false}
         let msg = JSON.parse(req.query.msg);
 
         // send the publish message
@@ -178,6 +178,21 @@ app.get('/basic/suction', function (req, res) {
         res.send("/basic/move endpoint completed successfully");
     }
 });
+
+// API endpoint that returns the real center of the pacakge based on the given values
+app.get('/packageCenter', function (req, res) {
+
+    console.log("recieved a request to the endpoint /packageCenter");
+    if (!req.querry.msg){
+        console.log("Error, missing msg parameter.");
+        res.send("Error, missing msg parameter.");
+    } else {
+        //extract data from the request = approximate center of the circle {"x":-14,"y":-117,"z":100"}
+        let msg = JSON.parse(req.querry.msg);
+        
+    }
+
+})
 
 // // websocket server path that can be called
 // app.ws('/', function (ws, req) {

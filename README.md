@@ -53,6 +53,7 @@ B-->|API endpoints|C
 | <code>/basic/move</code> | relative move from current location | <code>msg={"x": a, "y" = b, "z" = c}</code> | /
 | <code>/basic/suction</code> | enable or disable the suction of the robotic arm | <code>msg={"data": true/false}</code> | /
 | <code>/packageCenter</code> | retrive the actual center of a package located at the given location | <code>msg={"x": a, "y" = b, "z" = c} </code> | JSON object |
+| <code>/numberOfPackages</code> | returns the number of packages stored at the given location, based on what camera can see | <code>ms={"x" = a, "y" = b, "z" = c}</code> | JSON object |
 
 * **Examples of usage:**
     * calling API endpoint with no parameters
